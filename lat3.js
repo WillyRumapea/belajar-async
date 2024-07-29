@@ -1,5 +1,5 @@
 const kunci = "key";
-const benar = true;
+const benar = truee;
 
 const masukRumah = (kunci, user) => {
   console.log("sedang memvalidasi...");
@@ -38,19 +38,20 @@ const makan = (status) => {
   });
 };
 
-const user = masukRumah(kunci, "willea");
-user
-  .then((res) => {
-    const { kunci } = res;
-    buka(kunci)
-      .then((res) => {
-        const { status } = res;
-        makan(status);
-        console.log(res);
-      })
-      //menambahkan catch
-      .catch((err) => console.log(err));
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+const pemilikRumah = async () => {
+  try {
+    const { kunci: kunciDariRumah } = await masukRumah(kunci, "willea");
+    const { status } = await buka(kunciDariRumah);
+    const { makan: sudahMakan } = await makan(status);
+
+    console.log(`
+        kunci adalah ${kunciDariRumah}
+        statusnya sudah ${status}
+        apakah sudah makan ? ${sudahMakan}
+        `);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+pemilikRumah();
