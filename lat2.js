@@ -17,22 +17,22 @@ const masukRumah = (kunci, user) => {
 
 const buka = (kunci) => {
   console.log("sedang mendapatkan kunci...");
-  return new Promise((succes, failed) => {
+  return new Promise((success, failed) => {
     if (!kunci) failed("not mathing key");
     if (kunci)
       setTimeout(() => {
-        succes({ status: "terbuka" });
+        success({ status: "terbuka" });
       }, 500);
   });
 };
 
 const makan = (status) => {
   console.log("sedang mencari status...");
-  return new Promise((succes, failed) => {
+  return new Promise((success, failed) => {
     if (!status) failed("belum terbuka, coba lagi");
     if (status) {
       setTimeout(() => {
-        succes({ makan: benar });
+        success({ makan: benar });
       }, 2000);
     }
   });
